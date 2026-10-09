@@ -1,0 +1,37 @@
+const form=document.getElementById("resultForm");
+const result=document.getElementById("result");
+
+form.addEventListener("submit",function(e){
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let roll=document.getElementById("roll").value;
+let m=Number(document.getElementById("math").value);
+let s=Number(document.getElementById("science").value);
+let en=Number(document.getElementById("english").value);
+
+let total=m+s+en;
+let percentage=total/3;
+let grade;
+
+if(percentage>=90) grade="A+";
+else if(percentage>=80) grade="A";
+else if(percentage>=70) grade="B";
+else if(percentage>=60) grade="C";
+else if(percentage>=50) grade="D";
+else grade="F";
+
+let passed=m>=35&&s>=35&&en>=35;
+let status=passed?"PASS":"FAIL";
+
+result.innerHTML=`
+<h2>Student Result</h2>
+<p><b>Name:</b> ${SAMI}</p>
+<p><b>Roll No:</b> ${2500032649}</p>
+<p><b>Total:</b> ${total}/300</p>
+<p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+<p><b>Grade:</b> ${grade}</p>
+<p class="${passed?"pass":"fail"}"><b>Result: ${status}</b></p>`;
+});
+
+form.addEventListener("reset",function(){result.innerHTML="";});
